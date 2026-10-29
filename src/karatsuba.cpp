@@ -49,15 +49,14 @@ std::pair<std::string, std::string> partir(const std::string& A, size_t m) {
     return {quitarCerosIzquierda(x1), quitarCerosIzquierda(x0)};
 }
 
-// Esqueleto base del algoritmo de Karatsuba (se completará al integrar la suma y resta)
+// Implementación recursiva del algoritmo de multiplicación de Karatsuba O(n^log2(3))
 std::string karatsuba(const std::string& A, const std::string& B) {
-    // Copias locales para trabajar el relleno sin alterar los originales
     std::string a_copia = A;
     std::string b_copia = B;
     
     size_t n = rellenarPotenciaDeDos(a_copia, b_copia);
 
-    // Caso base: si la longitud es 1, se puede resolver directamente o delegar
+    // Caso base: si la longitud es 1 o menor, multiplicación directa
     if (n <= 1) {
         long long valA = std::stoll(a_copia);
         long long valB = std::stoll(b_copia);
@@ -70,10 +69,16 @@ std::string karatsuba(const std::string& A, const std::string& B) {
     auto [x1, x0] = partir(a_copia, m);
     auto [y1, y0] = partir(b_copia, m);
 
-    // Aquí irán las llamadas recursivas P1, P2 y P3 cuando las operaciones estén listas:
-    // P1 = karatsuba(x1, y1)
-    // P2 = karatsuba(x0, y0)
-    // P3 = karatsuba(sumar(x1, x0), sumar(y1, y0))
+    // Las 3 llamadas recursivas de Karatsuba
+    std::string P1 = karatsuba(x1, y1);                                  // P1 = x1 * y1
+    std::string P2 = karatsuba(x0, y0);                                  // P2 = x0 * y0
+    std::string P3 = karatsuba(sumar(x1, x0), sumar(y1, y0));            // P3 = (x1 + x0) * (y1 + y0)
 
-    return "0";
+    // Recomposición algebraica respetando el orden estricto de resta: (P3 - P1) - P2
+    std::string termino_central = restar(restar(P3, P1), P2);
+
+    std::string parte1 = desplazar(P1, 2 * m);
+    std::string parte2 = desplazar(termino_central, m);
+
+    return sumar(sumar(parte1, parte2), P2);
 }
