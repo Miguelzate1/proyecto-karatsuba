@@ -1,29 +1,4 @@
-// src/main_pruebas.cpp
-//
-// Integrante 3: bateria de pruebas de correctitud + benchmark de tiempos.
-//
-// Que hace:
-//   1) Valida karatsuba() contra multiplicacionClasica() en los 5 grupos de
-//      casos obligatorios del enunciado (1 digito, ceros a la izquierda,
-//      ceros intercalados, longitudes impares, numeros grandes). Varios casos
-//      ademas se comparan contra un resultado esperado calculado de forma
-//      independiente, para no validar el codigo solo contra si mismo.
-//   2) Mide tiempos de ambos algoritmos para n = 2, 4, 8, ... , 4096 digitos
-//      con std::chrono::steady_clock, promediando repeticiones y consumiendo
-//      el resultado para que el compilador no elimine el calculo.
-//   3) Escribe resultados/tiempos.csv y reporta el punto de cruce.
-//
-// Compilar (desde la raiz del repo; ajustar la lista de .cpp a la real):
-//   g++ -std=c++17 -O2 -Iinclude src/main_pruebas.cpp src/operaciones.cpp \
-//       src/karatsuba.cpp -o pruebas
-// Ejecutar:
-//   ./pruebas                 (escribe resultados/tiempos.csv)
-//   ./pruebas otra/ruta.csv   (escribe en otra ruta)
-//
-// SUPUESTO sobre karatsuba.h: los numeros son std::string de digitos en base
-// 10, digito mas significativo primero, y las funciones tienen la forma
-//   std::string multiplicacionClasica(const std::string&, const std::string&);
-//   std::string karatsuba(const std::string&, const std::string&);
+
 
 #include "karatsuba.h"
 
