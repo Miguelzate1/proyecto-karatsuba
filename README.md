@@ -6,8 +6,10 @@ Este proyecto implementa y compara el algoritmo de multiplicación clásica O(n^
 * `include/`: Contiene la cabecera `karatsuba.h` con las firmas de las funciones.
 * `src/`: Implementación de las operaciones aritméticas, el algoritmo de Karatsuba y el programa principal de pruebas.
 * `resultados/`: Almacena el archivo `tiempos.csv` generado por el benchmark y la gráfica de rendimiento.
-* `Informe_Practica2_Karatsuba-FInal.docx.pdf`: Análisis teórico, experimentación y conclusiones.
-* `README.md/`: Contiene  informacion breve sobre el proyecto.
+* `Informe_Practica2_Karatsuba_Final.docx.pdf`: Análisis teórico, experimentación y conclusiones.
+* `Makefile`: Archivo de configuración para automatizar la compilación del proyecto.
+* `.gitignore`: Archivo para excluir los binarios compilados y ejecutables del control de versiones.
+* `README.md`: Contiene información breve sobre el proyecto y las instrucciones de ejecución.
 
 ## Instrucciones de Compilación y Ejecución
 
